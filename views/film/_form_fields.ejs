@@ -1,0 +1,53 @@
+<div class="form-row">
+    <div class="form-item">
+        <label>User</label>
+        <select name="user">
+            <%=users.forEach(user => { %>
+                <% if(user.id === film.id){ %>
+                    <option selected label="<%user.name%>" value="<%=user.id %>" ></option>
+               <% } else { %>
+                    <option label="<%user.name%>" value="<%user.id%>"></option>
+              <% } %>
+           <% }) %> 
+        </select>
+    </div>
+    <div class="form-item">
+        <label>Director</label>
+        <input type="text" name="director" value="<%=film.director %>">
+    </div>
+</div>
+
+<div class="form-row">
+    <div class="form-item">
+        <label>Title</label>
+        <input type="text" name="title" value="<%=film.title%>">
+    </div>
+    <div class="form-item">
+        <label>Genre</label>
+        <select name="genre">
+            <option value="<%=film.genre %>">Action</option>
+            <option value="<%=film.genre %>">Animated</option>
+            <option value="<%=film.genre %>">Comedy</option>
+            <option value="<%=film.genre %>">Documentary</option>
+            <option value="<%=film.genre %>">Drama</option>
+            <option value="<%=film.genre %>">Horror</option>
+            <option value="<%=film.genre %>">Suspense</option>
+            <option value="<%=film.genre %>">Thriller</option>
+        </select>
+    </div>
+</div>
+
+<div class="form-row">
+    <div class="form-item">
+        <label>Release Date</label>
+        <input type="date" name="releaseDate" value="<%=film.releaseDate == null ? '' : film.releaseDate.toISOString().split('T')[0]%>" >
+    </div>
+    <div class="form-item">
+        <label>Rating</label>
+        <input type="number" name="rating" value="<%=film.rating %>" min="1" max="10">
+    </div>
+    <div class="form-item form-item-no-grow">
+        <label>Cover</label>
+        <input type="file" name="cover" class="film-cover filepond" > 
+    </div>
+</div>

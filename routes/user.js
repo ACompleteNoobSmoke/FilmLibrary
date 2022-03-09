@@ -38,17 +38,26 @@ router.get('/new', async(req, res) => {
 router.post('/', async (req, res) =>{
     let userName = req.body.name.trim();
     let exists = await userExists(userName);
-    if(exists){ return res.redirect('/');}
     const user = new User({name: userName });
+    if(exists){ 
+        return res.render('user/new', {
+            user:user,
+            errorMessage: `${userName} Exists In Database\nPlease Pick Another Name`
+        });
+    }
 
     try{
         const newUser = await user.save();
         res.redirect(`user/${newUser.id}`);
     }catch{
-        res.redirect('/');
+        res.render('user/new', {
+            user:user,
+            errorMessage: `Error Adding User To Database`
+        });
     }
 })
 
+//Routes to the user profile page
 router.get('/:id', async(req, res) => {
     try{
         const user = await User.findById(req.params.id);
@@ -58,8 +67,55 @@ router.get('/:id', async(req, res) => {
     }
 })
 
+//Routes to the user edit page
+router.get('/:id/edit', async(req, res) => {
+    try{
+        const user = await User.findById(req.params.id);
+        res.render('user/edit', {user:user});
+    }catch{
+        res.redirect('user/');
+    }
+});
+
+//Edits the user name if it doens't already exist in database
+router.put('/:id', async(req, res) => {
+    let newName = req.body.name.trim();
+    let exists = await userExists(newName);
+    let user;
+
+    try{
+        user = await User.findById(req.params.id);
+        if(exists && user != null){ 
+            return res.render(`user/edit`, {
+                user:user,
+                errorMessage: 'Error Updating The User!'
+            });
+        }
+        user.name = newName;
+        await user.save();
+        res.redirect(`/user/${user.id}`);
+    }catch{
+        res.redirect('user/')
+    }
+})
+
+//Delete the user from the Database
+router.delete('/:id', async(req, res) => {
+    let deletedUser;
+    try{
+        deletedUser = await User.findById(req.params.id);
+        await deletedUser.remove();
+        res.redirect('/user');
+    }catch{
+        let redirectURL = (deletedUser == null) 
+        ? '/' : `/user/${deletedUser.id}`
+        res.redirect(redirectURL);
+    }
+})
 
 
+
+//Checks the database to see if the name already exists.
 async function userExists(userName){
      let exists = false;
      userName = userName.toUpperCase();

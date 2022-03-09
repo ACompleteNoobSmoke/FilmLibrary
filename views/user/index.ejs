@@ -17,6 +17,7 @@
         <div class="btn-row">
             <a class="btn btn-primary" href="/user/<%=user.id %>">View</a>
             <a class="btn btn-primary" href="/user/<%=user.id %>/edit">Edit</a>
+            <%-include('../partials/deleteForm', {url: `/user/${user.id}`}) %>
         </div>
     </div>
 <% }) %>
