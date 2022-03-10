@@ -2,11 +2,11 @@
     <div class="form-item">
         <label>User</label>
         <select name="user">
-            <%=users.forEach(user => { %>
-                <% if(user.id === film.id){ %>
-                    <option selected label="<%user.name%>" value="<%=user.id %>" ></option>
+            <% users.forEach(user => { %>
+                <% if(user.id === film.user){ %>
+                    <option selected label="<%=user.name%>" value="<%=user.id %>" ></option>
                <% } else { %>
-                    <option label="<%user.name%>" value="<%user.id%>"></option>
+                    <option label="<%=user.name%>" value="<%=user.id%>"></option>
               <% } %>
            <% }) %> 
         </select>
