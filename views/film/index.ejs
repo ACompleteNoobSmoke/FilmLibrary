@@ -1,0 +1,27 @@
+<h2>All Films</h2>
+<form action="/film" method="get">
+    <div class="form-row">
+        <div class="form-item">
+            <label>Title</label>
+            <input type="text" name="title" value="<%=searchOption.title %>">
+        </div>
+        <div class="form-item">
+            <label>Genre</label>
+            <select name="genre" value="<%=searchOption.genre %>">
+                <option  value="action">Action</option>
+                <option  value="animated">Animated</option>
+                <option  value="comedy">Comedy</option>
+                <option  value="documentary">Documentary</option>
+                <option  value="drama">Drama</option>
+                <option  value="horror">Horror</option>
+                <option  value="suspense">Suspense</option>
+                <option  value="thriller">Thriller</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-row form-row-end">
+        <button class="btn btn-primary" type="submit">Search</button>
+    </div>
+</form>
+<br>
+<%-include('../partials/filmGrid.ejs', {films:films, large: true}) %>

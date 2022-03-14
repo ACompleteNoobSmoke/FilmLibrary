@@ -4,8 +4,23 @@ const User = require('../model/user');
 const imageMimeTypes = ['image/jpeg', 'image/png', 'image/gif'];
 const router = express.Router();
 
-router.get('/', (req, res) => {
-    res.send('Film Index Page');
+router.get('/', async (req, res) => {
+    let query = Film.find();
+    if(req.query.title != null && req.query.title != ''){
+        query = query.regex('title', new RegExp(req.query.title, 'i'))
+    }
+    if(req.query.genre != null && req.query.genre != ''){
+        query = query.regex('genre', new RegExp(req.query.genre, 'i'))
+    }
+    try{
+        const films = await query.exec();
+        res.render('film/index', {
+            films: films,
+            searchOption: req.query
+        });
+    }catch{
+        res.redirect("/")
+    }
 })
 
 router.get('/new', async (req, res) => {
@@ -14,6 +29,7 @@ router.get('/new', async (req, res) => {
 
 router.post('/', async (req, res) => {
     const newFilm = new Film({
+        user: req.body.user,
         title: req.body.title,
         director: req.body.director,
         genre: req.body.genre,
@@ -26,7 +42,8 @@ router.post('/', async (req, res) => {
     try{
         const film = await newFilm.save();
         res.redirect(`film/${film.id}`);
-    }catch{
+    }catch(err){
+        console.log(err);
         renderNewPage(res, newFilm, true);
     }
 })
@@ -57,7 +74,7 @@ async function renderFormPage(res, film, form, hasError = false){
             film: film
         }
         if(hasError){
-            let message = (form == 'edit') ? 'Error Editing Book' : 'Error Creating Book';
+            let message = (form == 'edit') ? 'Error Editing Film' : 'Error Creating Film';
             params.errorMessage = message;
         }
         res.render(`film/${form}`, params);
