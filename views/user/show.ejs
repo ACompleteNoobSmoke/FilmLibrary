@@ -1,4 +1,4 @@
-<h2 class="page-head"><%=user.name %></h2>
+<h2 class="page-header"><%=user.name %></h2>
 <div class="user-details-button-grid">
     <a href="/user/<%=user.id %>/edit" class="btn btn-primary">Edit</a>
     <%-include('../partials/deleteForm', {url: `/user/${user.id}`}) %>

@@ -1,0 +1,25 @@
+.header-title{
+    text-decoration: none;
+    color: red;
+    font: bolder;
+    font-size: xx-large;
+}
+
+.header-nav ul{
+    display: flex;
+    list-style-type: none;
+    float: right;
+}
+
+.header-nav ul li a{
+    text-decoration: none;
+    margin: 0px 25px 0px;
+}
+
+body{
+    background: lightgreen;
+}
+
+.page-header{
+
+}
