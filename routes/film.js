@@ -4,6 +4,8 @@ const User = require('../model/user');
 const imageMimeTypes = ['image/jpeg', 'image/png', 'image/gif'];
 const router = express.Router();
 
+
+//Film index router and page
 router.get('/', async (req, res) => {
     let query = Film.find();
     if(req.query.title != null && req.query.title != ''){
@@ -23,10 +25,14 @@ router.get('/', async (req, res) => {
     }
 })
 
+
+//Route to allow user to add a new film
 router.get('/new', async (req, res) => {
     renderNewPage(res, new Film());
 })
 
+//Route that gets the information from the new film page and 
+//add it to the database
 router.post('/', async (req, res) => {
     const newFilm = new Film({
         user: req.body.user,
@@ -48,14 +54,34 @@ router.post('/', async (req, res) => {
     }
 })
 
+//To show the film page
 router.get('/:id', async (req, res) => {
     try{
       const film = await Film.findById(req.params.id);
-    res.send(film);  
+    res.render('film/show', {film: film});
     }catch{
         res.redirect('/');
     }
     
+})
+
+//Route to delete film from database
+router.delete('/:id', async (req, res) => {
+    let film;
+    try{
+        film = await Film.findById(req.params.id);
+        await film.remove();
+        res.redirect('/film');
+    }catch{
+        if(film != null){
+            res.render(`film/show`, {
+                film:film,
+                errorMessage: 'Error Deleting Film From Database'
+            })
+        }else{
+            res.redirect('/film')
+        }
+    }
 })
 
 async function renderNewPage(res, film, hasError = false){
@@ -83,6 +109,7 @@ async function renderFormPage(res, film, form, hasError = false){
     }
 }
 
+//Encode and save cover to the database
 function saveCover(film, coverEncoded){
     if(coverEncoded == null) return;
     const cover = JSON.parse(coverEncoded)

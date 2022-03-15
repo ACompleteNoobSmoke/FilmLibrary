@@ -1,4 +1,8 @@
-<h2><%=user.name %></h2>
-<div>
-    
+<h2 class="page-head"><%=user.name %></h2>
+<div class="user-details-button-grid">
+    <a href="/user/<%=user.id %>/edit" class="btn btn-primary">Edit</a>
+    <%-include('../partials/deleteForm', {url: `/user/${user.id}`}) %>
 </div>
+<br>
+<h2>Favorite Films Of <%=user.name %></h2>
+<%-include('../partials/filmGrid.ejs', {films:films, large: true}) %>

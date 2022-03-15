@@ -61,7 +61,8 @@ router.post('/', async (req, res) =>{
 router.get('/:id', async(req, res) => {
     try{
         const user = await User.findById(req.params.id);
-        res.render('user/show', {user: user});
+        const film = await Film.find({user: user.id});
+        res.render('user/show', {user: user, films:film});
     }catch{
         res.redirect('/');
     }
