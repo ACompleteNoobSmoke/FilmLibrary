@@ -1,0 +1,16 @@
+.film-grid{
+    display: grid;
+    grid-template-columns: 230px 230px 230px 230px 230px 230px;
+}
+
+
+.film-cover{
+    height:300px;
+    width: 300px;
+}
+
+.film-cover-large{
+    height: 200px;
+    width: 200px;
+    margin-left: 20px;
+}

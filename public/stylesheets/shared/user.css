@@ -1,0 +1,45 @@
+.form-item input{
+    width: 90%;
+    border-radius: 5px;
+}
+
+.form-row-end{
+    float:right;
+    margin-right: 110px;
+}
+
+.form-row-end > .btn-primary{
+    margin-top: 5px;
+    display: block;
+    width: 115px;
+    height: 25px;
+    background: #4E9CAF;
+    text-align: center;
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
+}
+
+.user-name{
+    font-size: xx-large;
+    margin: 20px;
+}
+
+.btn-row{
+    float: right;
+    display: flex;
+}
+
+.btn-row > .btn{
+    display: block;
+    width: 115px;
+    height: 25px;
+    background: #4E9CAF;
+    padding: 10px;
+    text-align: center;
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
+    line-height: 25px;
+    margin-right: 10px;
+}

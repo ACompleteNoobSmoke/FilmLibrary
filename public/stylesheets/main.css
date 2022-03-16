@@ -1,3 +1,6 @@
+@import 'shared/user.css';
+@import 'shared/images.css';
+
 .header-title{
     text-decoration: none;
     color: red;
@@ -20,6 +23,15 @@ body{
     background: lightgreen;
 }
 
-.page-header{
 
+
+.btn-danger{
+    display: block;
+    width: 115px;
+    height: 25px;
+    background: tomato;
+    text-align: center;
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
 }
