@@ -1,5 +1,5 @@
-<div class="form-row">
-    <div class="form-item">
+<div class="film-form-row">
+    <div class="film-form-item">
         <label>User</label>
         <select name="user">
             <% users.forEach(user => { %>
@@ -11,18 +11,18 @@
            <% }) %> 
         </select>
     </div>
-    <div class="form-item">
+    <div class="film-form-item">
         <label>Director</label>
         <input type="text" name="director" value="<%=film.director %>">
     </div>
 </div>
 
-<div class="form-row">
-    <div class="form-item">
+<div class="film-form-row">
+    <div class="film-form-item">
         <label>Title</label>
         <input type="text" name="title" value="<%=film.title%>">
     </div>
-    <div class="form-item">
+    <div class="film-form-item">
         <label>Genre</label>
         <select name="genre">
             <option  value="action">Action</option>
@@ -37,16 +37,16 @@
     </div>
 </div>
 
-<div class="form-row">
-    <div class="form-item">
+<div class="film-form-row">
+    <div class="film-form-item">
         <label>Release Date</label>
         <input type="date" name="releaseDate" value="<%=film.releaseDate == null ? '' : film.releaseDate.toISOString().split('T')[0]%>" >
     </div>
-    <div class="form-item">
+    <div class="film-form-item">
         <label>Rating</label>
         <input type="number" name="rating" value="<%=film.rating %>" min="1" max="10">
     </div>
-    <div class="form-item form-item-no-grow">
+    <div class="film-form-item form-item-no-grow">
         <label>Cover</label>
         <input type="file" name="cover" class="filepond">
     </div>

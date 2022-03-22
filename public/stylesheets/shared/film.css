@@ -1,0 +1,16 @@
+.film-form-row{
+    display: grid;
+    grid-template-columns: 450px 450px;
+}
+
+.film-form-row-end{
+    margin-right: 580px;
+}
+
+.film-form-item label{
+    font-size: 35px;
+}
+
+.form-item-no-grow{
+    width: 700px;
+}

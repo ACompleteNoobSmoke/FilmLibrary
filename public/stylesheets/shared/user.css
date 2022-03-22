@@ -9,10 +9,10 @@
 }
 
 .form-row-end > .btn-primary{
-    margin-top: 5px;
     display: block;
     width: 115px;
     height: 25px;
+    font-size: 17px;
     background: #4E9CAF;
     text-align: center;
     border-radius: 5px;
@@ -35,11 +35,27 @@
     width: 115px;
     height: 25px;
     background: #4E9CAF;
-    padding: 10px;
     text-align: center;
     border-radius: 5px;
     color: white;
     font-weight: bold;
     line-height: 25px;
     margin-right: 10px;
+}
+
+.user-details-button-grid{
+    display: flex;
+}
+
+.user-details-button-grid > .btn-primary{
+    display: block;
+    width: 115px;
+    height: 25px;
+    font-size: 17px;
+    background: #4E9CAF;
+    text-align: center;
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
+    margin-right: 70px;
 }

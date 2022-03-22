@@ -1,5 +1,6 @@
 @import 'shared/user.css';
 @import 'shared/images.css';
+@import 'shared/film.css';
 
 .header-title{
     text-decoration: none;
@@ -23,8 +24,6 @@ body{
     background: lightgreen;
 }
 
-
-
 .btn-danger{
     display: block;
     width: 115px;
@@ -35,3 +34,32 @@ body{
     color: white;
     font-weight: bold;
 }
+
+.film-details{
+    display: grid;
+    grid-template-columns: 320px 320px;
+}
+
+.film-details-button-grid{
+    display: flex;
+}
+
+.film-details-button-grid > .btn-primary{
+    display: block;
+    width: 115px;
+    height: 25px;
+    font-size: 17px;
+    background: #4E9CAF;
+    text-align: center;
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
+    margin-right: 70px;
+}
+
+.film-details-label{
+    font-size: 25px;
+    font-weight: bolder;
+    margin-top: 15px;
+}
+

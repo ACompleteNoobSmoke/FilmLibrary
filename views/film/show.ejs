@@ -3,9 +3,8 @@
     <div>
         <img src="<%=film.coverImagePath %>" alt="Film Cover" class="film-cover">
         <div class="film-details-button-grid">
-            <a href="/film/<%=film.id %>/edit" class="btn btn-primary">Edit</a>
-            <%-include('../partials/deleteForm', {url: `/film/${film.id}`}) %>
             <a href="/user/<%=film.user%>" class="btn btn-primary">View User</a>
+            <%-include('../partials/deleteForm', {url: `/film/${film.id}`}) %>
         </div>
     </div>
 
