@@ -43,6 +43,9 @@ router.post('/', async (req, res) => {
         releaseDate: new Date(req.body.releaseDate)
     })
 
+    if(req.body.cover == null)
+        renderNewPage(res, newFilm, true);
+
     saveCover(newFilm, req.body.cover)
 
     try{
