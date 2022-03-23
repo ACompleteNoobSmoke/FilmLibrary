@@ -13,14 +13,14 @@
     </div>
     <div class="film-form-item">
         <label>Director</label>
-        <input type="text" name="director" value="<%=film.director %>">
+        <input type="text" name="director" required value="<%=film.director %>">
     </div>
 </div>
 
 <div class="film-form-row">
     <div class="film-form-item">
         <label>Title</label>
-        <input type="text" name="title" value="<%=film.title%>">
+        <input type="text" name="title" required value="<%=film.title%>">
     </div>
     <div class="film-form-item">
         <label>Genre</label>
@@ -40,14 +40,14 @@
 <div class="film-form-row">
     <div class="film-form-item">
         <label>Release Date</label>
-        <input type="date" name="releaseDate" value="<%=film.releaseDate == null ? '' : film.releaseDate.toISOString().split('T')[0]%>" >
+        <input type="date" name="releaseDate" required value="<%=film.releaseDate == null ? '' : film.releaseDate.toISOString().split('T')[0]%>" >
     </div>
     <div class="film-form-item">
         <label>Rating</label>
-        <input type="number" name="rating" value="<%=film.rating %>" min="1" max="10">
+        <input type="number" name="rating" value="<%=film.rating %>" min="1" max="10" required>
     </div>
     <div class="film-form-item form-item-no-grow">
         <label>Cover</label>
-        <input type="file" name="cover" class="filepond">
+        <input type="file" name="cover" class="filepond" required>
     </div>
 </div>
